@@ -5,25 +5,27 @@ require 'json'
 class Parser
 
     Game = Struct.new(
+    :game_info,
+    :home_team_stats,
+    :away_team_stats
+    )
+
+    GameInfo = Struct.new(
     :game_title,
     :game_date_formatted,
-    :away_team_name,
-    :away_team_odds,
     :game_time_formatted,
-    :home_team_name,
-    :home_team_odds,
-    :away_team_record_overall,
-    :away_team_record_road,
-    :away_team_record_ats_overall,
-    :away_team_record_ats_road,
-    :away_team_record_L10_overall,
-    :away_team_record_L10_road,
-    :home_team_record_overall,
-    :home_team_record_road,
-    :home_team_record_ats_overall,
-    :home_team_record_ats_road,
-    :home_team_record_L10_overall,
-    :home_team_record_L10_road
+    :away_team_name,
+    :home_team_name
+    )
+
+    TeamStats = Struct.new(
+    :team_odds,
+    :team_record_overall,
+    :team_record_road,
+    :team_record_ats_overall,
+    :team_record_ats_road,
+    :team_record_L10_overall,
+    :team_record_L10_road
     )
 
   def parse_html(html)
@@ -32,12 +34,23 @@ class Parser
     games = container.css('.cmg_matchup_game')
 
     games_parsed = []
+    i = 0
     games.each do |game|
-      games_parsed.push(parse_game(game).to_h)
+      puts i
+      i += 1
+      if i == 16
+      else
+        hashify = lambda do |struct|
+          as_hash = struct.to_h
+          struct_keys = as_hash.select { |_, v| v.is_a? Struct }.map(&:first)
+          struct_keys.each { |key| as_hash[key] = hashify.(as_hash[key]) }
+          as_hash
+        end
+        games_parsed.push(hashify.(parse_game(game)))
+      end
+
     end
-    # container.each do |game|
-    #   puts game.at_css('.cmg_matchup_header_team_names').text.strip
-    # end
+
     games_parsed
   end
 
@@ -70,7 +83,7 @@ class Parser
     away_team_name = away_team_top_info.css('.cmg_team_name > text()').text.strip
 
     # +7
-    away_team_odds = away_team_top_info.css('.cmg_matchup_list_away_odds').text.strip
+    away_team_odds = away_team_top_info.css('.cmg_matchup_list_away_odds > text()').text.strip
 
     # 8:25 PM ET
     game_time_formatted = game_top_info.css('.cmg_game_time').text.strip
@@ -79,7 +92,7 @@ class Parser
     home_team_name = home_team_top_info.css('.cmg_team_name > text()').text.strip
 
     # -7
-    home_team_odds = home_team_top_info.css('.cmg_matchup_list_home_odds').text.strip
+    home_team_odds = home_team_top_info.css('.cmg_matchup_list_home_odds > text()').text.strip
 
     # Away team record
     away_team_record = away_team_bottom_row.css('.cmg_matchup_in_short_condensed_away_record')
@@ -107,20 +120,16 @@ class Parser
     home_team_record_L10_overall = home_team_record_L10.css('span')[1].text
     home_team_record_L10_road = home_team_record_L10.css('span')[2].text
 
-    Game.new(
+    game_info = GameInfo.new(
     game_title,
     game_date_formatted,
-    away_team_name,
-    away_team_odds,
     game_time_formatted,
-    home_team_name,
+    away_team_name,
+    home_team_name
+    )
+
+    home_team_info = TeamStats.new(
     home_team_odds,
-    away_team_record_overall,
-    away_team_record_road,
-    away_team_record_ats_overall,
-    away_team_record_ats_road,
-    away_team_record_L10_overall,
-    away_team_record_L10_road,
     home_team_record_overall,
     home_team_record_road,
     home_team_record_ats_overall,
@@ -128,5 +137,18 @@ class Parser
     home_team_record_L10_overall,
     home_team_record_L10_road
     )
+
+    away_team_info = TeamStats.new(
+    away_team_odds,
+    away_team_record_overall,
+    away_team_record_road,
+    away_team_record_ats_overall,
+    away_team_record_ats_road,
+    away_team_record_L10_overall,
+    away_team_record_L10_road
+    )
+
+    Game.new(game_info, home_team_info, away_team_info)
+
   end
 end

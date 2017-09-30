@@ -3,8 +3,10 @@ GEM
   specs:
     backports (3.8.0)
     byebug (9.0.6)
+    dalli (2.7.6)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
+    memcachier (0.0.2)
     mini_portile2 (2.3.0)
     multi_json (1.12.2)
     multi_xml (0.6.0)
@@ -33,7 +35,9 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  dalli
   httparty (~> 0.14.0)
+  memcachier
   nokogiri (~> 1.6, >= 1.6.8)
   sinatra (~> 1.4, >= 1.4.7)
   sinatra-contrib (~> 1.4, >= 1.4.7)
