@@ -1,0 +1,85 @@
+{
+	"data": [
+		{
+			"game_info": {
+				"game_title": "New Orleans vs Miami",
+				"game_date_formatted": "Sunday, Oct. 1",
+				"game_time_formatted": "9:30 AM ET",
+				"away_team_name": "NO",
+				"home_team_name": "MIA"
+			},
+			"home_team_stats": {
+				"team_odds": "+3",
+				"team_record_overall": "1 - 1",
+				"team_record_road": "(0 - 0 Home)",
+				"team_record_ats_overall": "1 - 1",
+				"team_record_ats_road": "(0 - 0 Home)",
+				"team_record_L10_overall": "1 - 1",
+				"team_record_L10_road": "(1 - 1 ATS)"
+			},
+			"away_team_stats": {
+				"team_odds": "-3",
+				"team_record_overall": "1 - 2",
+				"team_record_road": "(1 - 1 Road)",
+				"team_record_ats_overall": "1 - 2",
+				"team_record_ats_road": "(1 - 1 Road)",
+				"team_record_L10_overall": "1 - 2",
+				"team_record_L10_road": "(1 - 2 ATS)"
+			}
+		},
+		{
+			"game_info": {
+				"game_title": "New Orleans vs Miami",
+				"game_date_formatted": "Sunday, Oct. 1",
+				"game_time_formatted": "9:30 AM ET",
+				"away_team_name": "NO",
+				"home_team_name": "MIA"
+			},
+			"home_team_stats": {
+				"team_odds": "+3",
+				"team_record_overall": "1 - 1",
+				"team_record_road": "(0 - 0 Home)",
+				"team_record_ats_overall": "1 - 1",
+				"team_record_ats_road": "(0 - 0 Home)",
+				"team_record_L10_overall": "1 - 1",
+				"team_record_L10_road": "(1 - 1 ATS)"
+			},
+			"away_team_stats": {
+				"team_odds": "-3",
+				"team_record_overall": "1 - 2",
+				"team_record_road": "(1 - 1 Road)",
+				"team_record_ats_overall": "1 - 2",
+				"team_record_ats_road": "(1 - 1 Road)",
+				"team_record_L10_overall": "1 - 2",
+				"team_record_L10_road": "(1 - 2 ATS)"
+			}
+		},
+		{
+			"game_info": {
+				"game_title": "New Orleans vs Miami",
+				"game_date_formatted": "Sunday, Oct. 1",
+				"game_time_formatted": "9:30 AM ET",
+				"away_team_name": "NO",
+				"home_team_name": "MIA"
+			},
+			"home_team_stats": {
+				"team_odds": "+3",
+				"team_record_overall": "1 - 1",
+				"team_record_road": "(0 - 0 Home)",
+				"team_record_ats_overall": "1 - 1",
+				"team_record_ats_road": "(0 - 0 Home)",
+				"team_record_L10_overall": "1 - 1",
+				"team_record_L10_road": "(1 - 1 ATS)"
+			},
+			"away_team_stats": {
+				"team_odds": "-3",
+				"team_record_overall": "1 - 2",
+				"team_record_road": "(1 - 1 Road)",
+				"team_record_ats_overall": "1 - 2",
+				"team_record_ats_road": "(1 - 1 Road)",
+				"team_record_L10_overall": "1 - 2",
+				"team_record_L10_road": "(1 - 2 ATS)"
+			}
+		}
+	]
+}

@@ -10,9 +10,10 @@ class GamesController < AppController
 
   get "/games" do
     content_type :json
-    request = GameService.new.get_games("2017", "09", "28")
-    games = Parser.new.parse_html(request)
-    {"data": games}.to_json
+    # request = GameService.new.get_games("2017", "09", "28")
+    # games = Parser.new.parse_html(request)
+    # {"data": games}.to_json
+    File.read('games.json')
   end
 
 end
