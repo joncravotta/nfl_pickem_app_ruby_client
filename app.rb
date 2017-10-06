@@ -1,5 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/json'
+require 'memcachier'
+require 'dalli'
 
 class AppController < Sinatra::Base
 
@@ -20,7 +22,7 @@ class AppController < Sinatra::Base
   def set_cache(key, value, time)
     @cache.set(key, value, time)
   end
-  
+
   private
 
   def get_cache(key)

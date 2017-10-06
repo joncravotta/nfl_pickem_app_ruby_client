@@ -1,7 +1,5 @@
 require_relative '../network_client/services/games_service'
 require_relative '../network_client/parser'
-require 'memcachier'
-require 'dalli'
 
 class GamesController < AppController
 
@@ -24,11 +22,7 @@ class GamesController < AppController
 
   get "/get_cache" do
     cache = cached?(TEST_CACHE_KEY)
-    if cached?(TEST_CACHE_KEY)
-      cache
-    else
-      "Cache failed"
-    end
+    cache ? cache : "CACHE FAILED"
   end
 
 end
